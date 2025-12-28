@@ -1,0 +1,56 @@
+name: flutter_terminal
+description: A Termux-like terminal emulator for Android built with Flutter
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Terminal UI
+  xterm: ^4.0.0
+
+  # PTY (Pseudo-terminal)
+  flutter_pty: ^0.4.2
+
+  # File & Path
+  path_provider: ^2.1.0
+
+  # HTTP Client
+  dio: ^5.4.0
+
+  # State Management
+  flutter_riverpod: ^2.4.0
+
+  # Archive extraction
+  archive: ^3.4.0
+
+  # Local Database
+  hive: ^2.2.0
+  hive_flutter: ^1.1.0
+
+  # SSH Support
+  dartssh2: ^2.9.0
+
+  # Permissions
+  permission_handler: ^11.0.0
+
+  # Utils
+  shared_preferences: ^2.2.0
+  uuid: ^4.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.0
+  hive_generator: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
