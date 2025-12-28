@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'features/terminal/presentation/pages/terminal_page.dart';
+import 'features/bootstrap/presentation/pages/setup_wizard_page.dart';
 import 'core/themes/terminal_themes.dart';
 
 class FlutterTerminalApp extends ConsumerWidget {
@@ -26,7 +26,7 @@ class FlutterTerminalApp extends ConsumerWidget {
           surface: AppTerminalThemes.defaultTheme.background,
         ),
       ),
-      home: const TerminalPage(),
+      home: const SetupWizardPage(),
     );
   }
 }

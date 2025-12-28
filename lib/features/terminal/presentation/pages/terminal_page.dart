@@ -8,7 +8,7 @@ import 'package:flutter_pty/flutter_pty.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:xterm/xterm.dart';
 
-import '../../data/services/pty_service.dart';
+import '../../../bootstrap/data/services/bootstrap_service.dart';
 import '../../../../core/themes/terminal_themes.dart';
 import '../widgets/extra_keys_bar.dart';
 
@@ -63,10 +63,23 @@ class _TerminalPageState extends ConsumerState<TerminalPage> {
     };
   }
 
-  void _startPty() {
-    final ptyService = ref.read(ptyServiceProvider);
+  Future<void> _startPty() async {
+    final bootstrapService = ref.read(bootstrapServiceProvider);
+    await bootstrapService.initialize();
 
-    _pty = ptyService.startPty(
+    // Get shell and environment from bootstrap service
+    final shell = bootstrapService.getShellPath();
+    final args = bootstrapService.getShellArgs();
+    final env = bootstrapService.getEnvironment();
+
+    _pty = Pty.start(
+      shell,
+      arguments: args,
+      environment: {
+        ...Platform.environment,
+        ...env,
+      },
+      workingDirectory: bootstrapService.homePath,
       rows: 24,
       columns: 80,
     );
@@ -88,7 +101,12 @@ class _TerminalPageState extends ConsumerState<TerminalPage> {
     Future.delayed(const Duration(milliseconds: 500), () {
       if (mounted) {
         _terminal.write('\x1B[1;32mFlutter Terminal\x1B[0m\r\n');
-        _terminal.write('Type commands to get started...\r\n\r\n');
+        if (File('${bootstrapService.binPath}/busybox').existsSync()) {
+          _terminal.write('BusyBox environment loaded.\r\n');
+          _terminal.write('Type "busybox" to see available commands.\r\n\r\n');
+        } else {
+          _terminal.write('Basic Android shell. Install BusyBox for more commands.\r\n\r\n');
+        }
       }
     });
   }
