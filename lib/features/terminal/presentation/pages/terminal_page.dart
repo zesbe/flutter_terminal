@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -222,7 +223,7 @@ class _TerminalPageState extends ConsumerState<TerminalPage> {
               const SizedBox(height: 8),
               Wrap(
                 spacing: 8,
-                children: TerminalThemes.all.keys.map((name) {
+                children: AppTerminalThemes.all.keys.map((name) {
                   return ChoiceChip(
                     label: Text(name),
                     selected: _currentTheme == name,
@@ -267,7 +268,7 @@ class _TerminalPageState extends ConsumerState<TerminalPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = TerminalThemes.all[_currentTheme] ?? TerminalThemes.defaultTheme;
+    final theme = AppTerminalThemes.all[_currentTheme] ?? AppTerminalThemes.defaultTheme;
 
     return Scaffold(
       backgroundColor: theme.background,

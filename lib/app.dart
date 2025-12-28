@@ -15,15 +15,15 @@ class FlutterTerminalApp extends ConsumerWidget {
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: TerminalThemes.defaultTheme.background,
+        scaffoldBackgroundColor: AppTerminalThemes.defaultTheme.background,
         appBarTheme: AppBarTheme(
-          backgroundColor: TerminalThemes.defaultTheme.background,
+          backgroundColor: AppTerminalThemes.defaultTheme.background,
           elevation: 0,
         ),
         colorScheme: ColorScheme.dark(
-          primary: TerminalThemes.defaultTheme.cyan,
-          secondary: TerminalThemes.defaultTheme.green,
-          surface: TerminalThemes.defaultTheme.background,
+          primary: AppTerminalThemes.defaultTheme.cyan,
+          secondary: AppTerminalThemes.defaultTheme.green,
+          surface: AppTerminalThemes.defaultTheme.background,
         ),
       ),
       home: const TerminalPage(),

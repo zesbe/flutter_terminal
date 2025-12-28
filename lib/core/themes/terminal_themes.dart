@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:xterm/xterm.dart';
 
 /// Collection of terminal color themes
-class TerminalThemes {
-  TerminalThemes._();
+class AppTerminalThemes {
+  AppTerminalThemes._();
 
   /// Default dark theme (similar to Termux)
   static const TerminalTheme defaultTheme = TerminalTheme(
