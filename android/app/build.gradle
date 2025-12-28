@@ -79,9 +79,9 @@ android {
                 // Use debug signing for unsigned releases
                 signingConfig signingConfigs.debug
             }
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Disable minify/shrink - not for Play Store, avoid R8 issues
+            minifyEnabled false
+            shrinkResources false
         }
     }
 
